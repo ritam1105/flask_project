@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matri Ganga</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/college_logo.png') }}" alt="College Logo" class="logo">
+        </div>
+        <h1>Aqua Innovators</h1>
+    </header>
+
+    <main>
+        <div class="welcome-message">
+            <h2>Welcome to the Water Quality Monitoring System</h2>
+            <p>Real-time Ganga River water quality forecasting using AI-enabled DSS, satellite data, IoT, and dynamic models.</p>
+        </div>
+
+        <div class="login-button-container">
+            <a href="{{ url_for('login') }}" class="login-button">Login</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aqua-Innovators. All rights reserved.</p>
+    </footer>
+</body>
+</html>
