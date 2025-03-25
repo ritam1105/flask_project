@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+        .logout-button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .logout-button:hover {
+            background-color: #333333;
+        }
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .data-box {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .data-box:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-5px);
+        }
+        .data-box h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #555;
+        }
+        .data-box p {
+            margin: 5px 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .data-box small {
+            color: #777;
+        }
+        .value-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .fluctuation {
+            font-size: 14px;
+            color: #28a745;
+        }
+        .fluctuation.negative {
+            color: #dc3545;
+        }
+        .info-box {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .info-box h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: #555;
+            font-weight: bold;
+        }
+        .info-box p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #333;
+            font-weight: normal;
+        }
+        .info-box p span {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .delete-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dashboard</h1>
+        <button class="logout-button" onclick="window.location.href='/logout'">Logout</button>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="data-box" onclick="window.location.href='/temperature_graph'">
+            <h3>Temperature</h3>
+            <div class="value-label">Average Value</div>
+            <p id="temperature-value">__</p>
+            <small>Change: <span id="temperature-fluctuation" class="fluctuation">__</span> past hour</small>
+        </div>
+        <div class="data-box" onclick="window.location.href='/turbidity_graph'">
+            <h3>Turbidity</h3>
+            <div class="value-label">Average Value</div>
+            <p id="turbidity-value">__</p>
+            <small>Change: <span id="turbidity-fluctuation" class="fluctuation">__</span> past hour</small>
+        </div>
+        <div class="data-box" onclick="window.location.href='/ph_graph'">
+            <h3>pH</h3>
+            <div class="value-label">Average Value</div>
+            <p id="ph-value">__</p>
+            <small>Change: <span id="ph-fluctuation" class="fluctuation">__</span> past hour</small>
+        </div>
+        <div class="data-box" onclick="window.location.href='/water_level_graph'">
+            <h3>Water Level</h3>
+            <div class="value-label">Average Value</div>
+            <p id="water-level-value">__</p>
+            <small>Change: <span id="water-level-fluctuation" class="fluctuation">__</span> past hour</small>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h3>Water Quality Information</h3>
+        <p>Percentage of Drinkable Water: <span id="drinkable-percentage">__</span>%</p>
+        <p>Water Quality Grade: <span id="water-grade">__</span></p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date & Time</th>
+                <th>Temperature (°C)</th>
+                <th>Turbidity (NTU)</th>
+                <th>pH</th>
+                <th>Water Level (m)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="data-table">
+            {% for data in sensor_data %}
+            <tr>
+                <td>{{ data.id }}</td>
+                <td>{{ data.timestamp }}</td>
+                <td>{{ data.temperature }}</td>
+                <td>{{ data.turbidity }}</td>
+                <td>{{ data.ph }}</td>
+                <td>{{ data.water_level }}</td>
+                <td><button class="delete-button" onclick="deleteRow('{{ data.id }}')">Delete</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        // Function to calculate average of a property
+        function calculateAverage(data, key) {
+            if (data.length === 0) return 0;
+            const sum = data.reduce((acc, item) => acc + item[key], 0);
+            return (sum / data.length).toFixed(2);
+        }
+
+        // Function to calculate fluctuation (difference between first and last value in past hour)
+        function calculateFluctuation(data, key) {
+            if (data.length < 2) return { value: 0, isPositive: true };
+            
+            const current = data[0][key];
+            const previous = data[data.length-1][key];
+            const difference = current - previous;
+            
+            return {
+                value: Math.abs(difference).toFixed(2),
+                isPositive: difference >= 0
+            };
+        }
+
+        // Function to calculate the percentage of drinkable water
+        function calculateDrinkablePercentage(data) {
+            if (data.length === 0) return null;
+            
+            let drinkableCount = 0;
+            data.forEach(d => {
+                if (d.temperature >= 10 && d.temperature <= 25 && 
+                    d.turbidity <= 5 && d.ph >= 6.5 && d.ph <= 8.5) {
+                    drinkableCount++;
+                }
+            });
+            return ((drinkableCount / data.length) * 100).toFixed(2);
+        }
+
+        // Function to determine water quality grade
+        function determineWaterGrade(data) {
+            if (data.length === 0) return "No data";
+            
+            const avgTemp = data.reduce((sum, d) => sum + d.temperature, 0) / data.length;
+            const avgTurb = data.reduce((sum, d) => sum + d.turbidity, 0) / data.length;
+            const avgPH = data.reduce((sum, d) => sum + d.ph, 0) / data.length;
+            
+            if (avgTemp >= 10 && avgTemp <= 25 && avgTurb <= 5 && avgPH >= 6.5 && avgPH <= 8.5) {
+                return "Grade-A (Drinking)";
+            } else if (avgTemp >= 10 && avgTemp <= 30 && avgTurb <= 10 && avgPH >= 6.0 && avgPH <= 9.0) {
+                return "Grade-B (Bathing)";
+            } else if (avgTemp >= 10 && avgTemp <= 35 && avgTurb <= 20 && avgPH >= 5.5 && avgPH <= 9.5) {
+                return "Grade-C (Domestic)";
+            } else if (avgTemp >= 10 && avgTemp <= 40 && avgTurb <= 50 && avgPH >= 5.0 && avgPH <= 10.0) {
+                return "Grade-D (Irrigation)";
+            } else {
+                return "Grade-E (Industrial)";
+            }
+        }
+
+        // Function to update dashboard values
+        async function updateDashboard() {
+            try {
+                const response = await fetch('/get_data');
+                const data = await response.json();
+                
+                if (data.length > 0) {
+                    // Update values with averages
+                    document.getElementById('temperature-value').textContent = calculateAverage(data, 'temperature');
+                    document.getElementById('turbidity-value').textContent = calculateAverage(data, 'turbidity');
+                    document.getElementById('ph-value').textContent = calculateAverage(data, 'ph');
+                    document.getElementById('water-level-value').textContent = calculateAverage(data, 'water_level');
+                    
+                    // Update fluctuations
+                    const tempFluct = calculateFluctuation(data, 'temperature');
+                    const turbFluct = calculateFluctuation(data, 'turbidity');
+                    const phFluct = calculateFluctuation(data, 'ph');
+                    const levelFluct = calculateFluctuation(data, 'water_level');
+                    
+                    const tempElement = document.getElementById('temperature-fluctuation');
+                    const turbElement = document.getElementById('turbidity-fluctuation');
+                    const phElement = document.getElementById('ph-fluctuation');
+                    const levelElement = document.getElementById('water-level-fluctuation');
+                    
+                    tempElement.textContent = `${tempFluct.isPositive ? '+' : '-'}${tempFluct.value}`;
+                    tempElement.className = tempFluct.isPositive ? 'fluctuation' : 'fluctuation negative';
+                    
+                    turbElement.textContent = `${turbFluct.isPositive ? '+' : '-'}${turbFluct.value}`;
+                    turbElement.className = turbFluct.isPositive ? 'fluctuation' : 'fluctuation negative';
+                    
+                    phElement.textContent = `${phFluct.isPositive ? '+' : '-'}${phFluct.value}`;
+                    phElement.className = phFluct.isPositive ? 'fluctuation' : 'fluctuation negative';
+                    
+                    levelElement.textContent = `${levelFluct.isPositive ? '+' : '-'}${levelFluct.value}`;
+                    levelElement.className = levelFluct.isPositive ? 'fluctuation' : 'fluctuation negative';
+                    
+                    // Update water quality info
+                    document.getElementById('drinkable-percentage').textContent = 
+                        calculateDrinkablePercentage(data);
+                    document.getElementById('water-grade').textContent = 
+                        determineWaterGrade(data);
+                }
+            } catch (error) {
+                console.error('Error updating dashboard:', error);
+            }
+        }
+
+        // Function to delete a row
+        async function deleteRow(id) {
+            if (confirm('Are you sure you want to delete this entry?')) {
+                try {
+                    const response = await fetch(`/delete_data/${id}`, { 
+                        method: 'DELETE' 
+                    });
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert('Failed to delete the entry.');
+                    }
+                } catch (error) {
+                    console.error('Error deleting data:', error);
+                }
+            }
+        }
+
+        // Initialize dashboard
+        updateDashboard();
+        // Update every 30 seconds
+        setInterval(updateDashboard, 30000);
+    </script>
+</body>
+</html>

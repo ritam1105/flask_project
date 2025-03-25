@@ -1,0 +1,354 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Index Page Styles */
+header {
+    background-color: rgba(6, 6, 6, 0.514);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 10px 0 0;
+    color: #1a1a2e;
+}
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.welcome-message {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.welcome-message h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #1a1a2e; 
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: #555; 
+}
+
+.login-button-container {
+    margin-top: 30px;
+}
+
+.login-button {
+    background-color: #1a1a2e;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0a192f; 
+}
+
+footer {
+    background-color: #1a1a2e; 
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Login Page Styles */
+/* General Styles (for all pages) */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Index Page Styles */
+header {
+    background-color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 10px 0 0;
+    color: #1a1a2e; 
+}
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.welcome-message {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.welcome-message h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #1a1a2e; 
+}
+
+.welcome-message p {
+    font-size: 1.2rem;
+    color: #555; 
+}
+
+.login-button-container {
+    margin-top: 30px;
+}
+
+.login-button {
+    background-color: #1a1a2e;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0a192f; 
+}
+
+footer {
+    background-color: #1a1a2e; 
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Dashboard Page Styles */
+/* Add your dashboard-specific styles here */
+
+/* Login Page Styles (scoped to .login-page) */
+body.login-page {
+    margin: 0;
+    padding: 0;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-page .login-container {
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.login-page .logo-container {
+    margin-bottom: 20px;
+}
+
+.login-page .logo {
+    height: 80px;
+    width: auto;
+}
+
+.login-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #1a1a2e; 
+}
+
+.login-page .subtitle {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.login-page .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.login-page .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.login-page .form-group input[type="text"],
+.login-page .form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.login-page .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.login-page .remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.login-page .remember-me input {
+    margin-right: 10px;
+}
+
+.login-page .forgot-password {
+    color: #1a1a2e;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.login-page .forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-page .login-button {
+    background-color: #1a1a2e; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.login-page .login-button:hover {
+    background-color: #0a192f; 
+}
+/* Dashboard Page Styles */
+body.dashboard-page {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color:rgb(253, 253, 253);;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #1a1a2e; 
+}
+
+header .logout-button {
+    background-color: #1a1a2e; 
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+header .logout-button:hover {
+    background-color: #0a192f; 
+}
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.chart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #1a1a2e; 
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
